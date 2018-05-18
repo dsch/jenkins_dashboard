@@ -7,6 +7,22 @@
 <script>
 import JobsStatus from './components/JobsStatus'
 
+function extractJson (response) {
+  return response.json()
+}
+
+function getStatus (data) {
+  return data.building ? 'building' : (data.result === 'SUCCESS') ? 'success' : 'failure'
+}
+
+function buildJobData (name, data) {
+  return {
+    name: name,
+    status: getStatus(data),
+    timestamp: new Date(data.timestamp)
+  }
+}
+
 export default {
   name: 'App',
   components: {
@@ -14,12 +30,25 @@ export default {
   },
   data () {
     return {
-      jobs: [
-        {id: 1, name: 'E16019 Application', timestamp: new Date(1520022023650), status: 'failure'},
-        {id: 2, name: 'E16019 Bootloader', timestamp: new Date(1520022023650), status: 'success'},
-        {id: 3, name: 'E16016 Bootloader', timestamp: new Date(1520022023650), status: 'building'}
-      ]
+      url: '/static/jenkins/view/api.json',
+      jobs: [ ]
     }
+  },
+  created: function () {
+    var vm = this
+    fetch(vm.url)
+      .then(extractJson)
+      .then(function (data) {
+        Promise.all(data.jobs.map(function (job) {
+          return fetch(job.url)
+            .then(extractJson)
+            .then(function (data) {
+              return buildJobData(job.name, data)
+            })
+        })).then(function (jobs) {
+          vm.jobs = jobs
+        })
+      })
   }
 }
 </script>

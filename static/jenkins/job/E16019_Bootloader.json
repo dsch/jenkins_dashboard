@@ -1,0 +1,185 @@
+{
+  "_class" : "hudson.model.FreeStyleBuild",
+  "actions" : [
+    {
+      "_class" : "hudson.model.CauseAction",
+      "causes" : [
+        {
+          "_class" : "hudson.triggers.SCMTrigger$SCMTriggerCause",
+          "shortDescription" : "Started by an SCM change"
+        }
+      ]
+    },
+    {
+      
+    },
+    {
+      "_class" : "jenkins.metrics.impl.TimeInQueueAction"
+    },
+    {
+      "_class" : "hudson.scm.SubversionTagAction"
+    },
+    {
+      
+    },
+    {
+      "_class" : "hudson.plugins.warnings.WarningsResultAction"
+    },
+    {
+      "_class" : "hudson.plugins.warnings.AggregatedWarningsResultAction"
+    },
+    {
+      
+    },
+    {
+      
+    }
+  ],
+  "artifacts" : [
+    {
+      "displayPath" : "DemoFbl.elf",
+      "fileName" : "DemoFbl.elf",
+      "relativePath" : "Appl/DemoFbl.elf"
+    },
+    {
+      "displayPath" : "DemoFbl.hex",
+      "fileName" : "DemoFbl.hex",
+      "relativePath" : "Appl/DemoFbl.hex"
+    }
+  ],
+  "building" : false,
+  "description" : null,
+  "displayName" : "#35",
+  "duration" : 50276,
+  "estimatedDuration" : 47847,
+  "executor" : null,
+  "fullDisplayName" : "E16019 » E16019_Bootloader #35",
+  "id" : "35",
+  "keepLog" : false,
+  "number" : 35,
+  "queueId" : 63,
+  "result" : "SUCCESS",
+  "timestamp" : 1517496008242,
+  "url" : "http://wnsvpol1/jenkins/job/E16019/job/E16019_Bootloader/35/",
+  "builtOn" : "wnsvbui1",
+  "changeSet" : {
+    "_class" : "hudson.scm.SubversionChangeLogSet",
+    "items" : [
+      {
+        "_class" : "hudson.scm.SubversionChangeLogSet$LogEntry",
+        "affectedPaths" : [
+          "Appl/gendata/SecMPar.c",
+          "Appl/gendata/SecMPar.h",
+          "Appl/gendata/SecM_cfg.h",
+          "Appl/gendata/fbl_apfb.c",
+          "Appl/gendata/fbl_apfb.h",
+          "Appl/gendata/fbl_cfg.h",
+          "Appl/gendata/fbl_mtab.c",
+          "Appl/gendata/fbl_mtab.h",
+          "Appl/gendata/ftp_cfg.h",
+          "Appl/gendata/v_cfg.h",
+          "Appl/gendata/v_inc.h",
+          "Appl/gendata/v_par.c",
+          "Appl/gendata/v_par.h",
+          "Config/DemoFbl.gny",
+          "vFlash/FordOsiris.vflash",
+          "vFlash/FordOsiris/FordSeedKeyZKW1801301.dll",
+          "vFlash/FordOsiris/seedkey_ford.dll"
+        ],
+        "author" : {
+          "absoluteUrl" : "http://wnsvpol1/jenkins/user/wnscda",
+          "fullName" : "David Schneider"
+        },
+        "commitId" : "1386",
+        "timestamp" : 1517495701825,
+        "date" : "2018-02-01T14:35:01.825374Z",
+        "msg" : "configure SEC_ECU_KEY in bootloader and vFlash configuration",
+        "paths" : [
+          {
+            "editType" : "edit",
+            "file" : "/trunk/Code/VectorBootloader/Appl/gendata/SecMPar.c"
+          },
+          {
+            "editType" : "edit",
+            "file" : "/trunk/Code/VectorBootloader/Appl/gendata/SecMPar.h"
+          },
+          {
+            "editType" : "edit",
+            "file" : "/trunk/Code/VectorBootloader/Appl/gendata/SecM_cfg.h"
+          },
+          {
+            "editType" : "edit",
+            "file" : "/trunk/Code/VectorBootloader/Appl/gendata/fbl_apfb.c"
+          },
+          {
+            "editType" : "edit",
+            "file" : "/trunk/Code/VectorBootloader/Appl/gendata/fbl_apfb.h"
+          },
+          {
+            "editType" : "edit",
+            "file" : "/trunk/Code/VectorBootloader/Appl/gendata/fbl_cfg.h"
+          },
+          {
+            "editType" : "edit",
+            "file" : "/trunk/Code/VectorBootloader/Appl/gendata/fbl_mtab.c"
+          },
+          {
+            "editType" : "edit",
+            "file" : "/trunk/Code/VectorBootloader/Appl/gendata/fbl_mtab.h"
+          },
+          {
+            "editType" : "edit",
+            "file" : "/trunk/Code/VectorBootloader/Appl/gendata/ftp_cfg.h"
+          },
+          {
+            "editType" : "edit",
+            "file" : "/trunk/Code/VectorBootloader/Appl/gendata/v_cfg.h"
+          },
+          {
+            "editType" : "edit",
+            "file" : "/trunk/Code/VectorBootloader/Appl/gendata/v_inc.h"
+          },
+          {
+            "editType" : "edit",
+            "file" : "/trunk/Code/VectorBootloader/Appl/gendata/v_par.c"
+          },
+          {
+            "editType" : "edit",
+            "file" : "/trunk/Code/VectorBootloader/Appl/gendata/v_par.h"
+          },
+          {
+            "editType" : "edit",
+            "file" : "/trunk/Code/VectorBootloader/Config/DemoFbl.gny"
+          },
+          {
+            "editType" : "edit",
+            "file" : "/trunk/Code/VectorBootloader/vFlash/FordOsiris.vflash"
+          },
+          {
+            "editType" : "add",
+            "file" : "/trunk/Code/VectorBootloader/vFlash/FordOsiris/FordSeedKeyZKW1801301.dll"
+          },
+          {
+            "editType" : "delete",
+            "file" : "/trunk/Code/VectorBootloader/vFlash/FordOsiris/seedkey_ford.dll"
+          }
+        ],
+        "revision" : 1386,
+        "user" : "David Schneider"
+      }
+    ],
+    "kind" : "svn",
+    "revisions" : [
+      {
+        "module" : "http://wnsvpol1.intranet.zkw.at/svn/E16019/trunk/Code/VectorBootloader",
+        "revision" : 1386
+      }
+    ]
+  },
+  "culprits" : [
+    {
+      "absoluteUrl" : "http://wnsvpol1/jenkins/user/wnscda",
+      "fullName" : "David Schneider"
+    }
+  ]
+}
