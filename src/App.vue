@@ -7,10 +7,6 @@
 <script>
 import JobsStatus from './components/JobsStatus'
 
-function extractJson (response) {
-  return response.json()
-}
-
 function getStatus (data) {
   return data.building ? 'building' : (data.result === 'SUCCESS') ? 'success' : 'failure'
 }
@@ -23,6 +19,13 @@ function buildJobData (name, data) {
   }
 }
 
+function fetchJenkinsJsonApi (url) {
+  return fetch(url + '/api/json')
+    .then(function (response) {
+      return response.json()
+    })
+}
+
 export default {
   name: 'App',
   components: {
@@ -31,18 +34,16 @@ export default {
   data () {
     return {
       // url: 'https://jenkins.mono-project.com/view/Components/api/json',
-      url: '/static/jenkins/view/api/json',
+      url: '/static/jenkins/view',
       jobs: [ ]
     }
   },
   created: function () {
     const vm = this
-    fetch(vm.url)
-      .then(extractJson)
+    fetchJenkinsJsonApi(vm.url)
       .then(function (data) {
         Promise.all(data.jobs.map(function (job) {
-          return fetch(job.url + '/lastBuild/api/json')
-            .then(extractJson)
+          return fetchJenkinsJsonApi(job.url + '/lastBuild')
             .then(function (data) {
               return buildJobData(job.name, data)
             })
