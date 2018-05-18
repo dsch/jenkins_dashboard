@@ -48,7 +48,9 @@ export default {
               return buildJobData(job.name, data)
             })
         })).then(function (jobs) {
-          vm.jobs = jobs
+          vm.jobs = jobs.sort(function (a, b) {
+            return b.timestamp - a.timestamp
+          })
         })
       })
   }
