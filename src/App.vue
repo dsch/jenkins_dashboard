@@ -6,16 +6,21 @@
 
 <script>
 import JobsStatus from './components/JobsStatus'
+import IntlRelativeFormat from 'intl-relativeformat'
+
+const rf = new IntlRelativeFormat('en-US')
 
 function getStatus (data) {
   return data.building ? 'building' : (data.result === 'SUCCESS') ? 'success' : 'failure'
 }
 
 function buildJobData (name, data) {
+  const date = new Date(data.timestamp)
   return {
     name: name,
     status: getStatus(data),
-    timestamp: new Date(data.timestamp)
+    date: date,
+    timestamp: rf.format(date)
   }
 }
 
@@ -49,7 +54,7 @@ export default {
             })
         })).then(function (jobs) {
           vm.jobs = jobs.sort(function (a, b) {
-            return b.timestamp - a.timestamp
+            return b.date - a.date
           })
         })
       })
