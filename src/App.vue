@@ -8,7 +8,7 @@
 import JobsStatus from './components/JobsStatus'
 import IntlRelativeFormat from 'intl-relativeformat'
 
-const rf = new IntlRelativeFormat('en-US')
+const rf = new IntlRelativeFormat()
 
 function getStatus (data) {
   return data.building ? 'building' : (data.result === 'SUCCESS') ? 'success' : 'failure'
