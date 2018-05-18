@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <JobsStatus/>
+    <JobsStatus v-bind:jobs="jobs"/>
   </div>
 </template>
 
@@ -11,6 +11,15 @@ export default {
   name: 'App',
   components: {
     JobsStatus
+  },
+  data () {
+    return {
+      jobs: [
+        {id: 1, name: 'E16019 Application', timestamp: new Date(1520022023650), status: 'failure'},
+        {id: 2, name: 'E16019 Bootloader', timestamp: new Date(1520022023650), status: 'success'},
+        {id: 3, name: 'E16016 Bootloader', timestamp: new Date(1520022023650), status: 'building'}
+      ]
+    }
   }
 }
 </script>
