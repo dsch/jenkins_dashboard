@@ -10,7 +10,7 @@
 
 <script>
 export default {
-  name: 'HelloWorld',
+  name: 'JobsStatus',
   data () {
     return {
       jobs: [
@@ -50,6 +50,6 @@ li.success {
 }
 
 li.building {
-  background-color: orange;
+  background-color: #00008d;
 }
 </style>
