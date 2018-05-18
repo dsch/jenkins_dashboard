@@ -5,19 +5,19 @@
     {
       "_class" : "hudson.model.FreeStyleProject",
       "name" : "E17015_Analysis",
-      "url" : "/static/jenkins/job/E17015_Analysis.json",
+      "url" : "/static/jenkins/job/E17015_Analysis",
       "color" : "blue"
     },
     {
       "_class" : "hudson.model.FreeStyleProject",
       "name" : "E16019_Bootloader",
-      "url" : "/static/jenkins/job/E16019_Bootloader.json",
+      "url" : "/static/jenkins/job/E16019_Bootloader",
       "color" : "aborted"
     },
     {
       "_class" : "hudson.model.FreeStyleProject",
       "name" : "E16019_Application",
-      "url" : "/static/jenkins/job/E16019_Application.json",
+      "url" : "/static/jenkins/job/E16019_Application",
       "color" : "red"
     }
   ]

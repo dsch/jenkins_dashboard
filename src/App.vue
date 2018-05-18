@@ -30,17 +30,18 @@ export default {
   },
   data () {
     return {
-      url: '/static/jenkins/view/api.json',
+      // url: 'https://jenkins.mono-project.com/view/Components/api/json',
+      url: '/static/jenkins/view/api/json',
       jobs: [ ]
     }
   },
   created: function () {
-    var vm = this
+    const vm = this
     fetch(vm.url)
       .then(extractJson)
       .then(function (data) {
         Promise.all(data.jobs.map(function (job) {
-          return fetch(job.url)
+          return fetch(job.url + '/lastBuild/api/json')
             .then(extractJson)
             .then(function (data) {
               return buildJobData(job.name, data)
