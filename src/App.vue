@@ -14,14 +14,11 @@ function getStatus (data) {
   return data.building ? 'building' : (data.result === 'SUCCESS') ? 'success' : 'failure'
 }
 
-function buildJobData (name, data) {
-  const date = new Date(data.timestamp)
-  return {
-    name: name,
-    status: getStatus(data),
-    date: date,
-    timestamp: rf.format(date)
-  }
+function updateJobStatus (job, build) {
+  const date = new Date(build.timestamp)
+  job.status = getStatus(build)
+  job.date = date
+  job.timestamp = rf.format(date)
 }
 
 function fetchJenkinsJsonApi (url) {
@@ -47,15 +44,20 @@ export default {
     const vm = this
     fetchJenkinsJsonApi(vm.url)
       .then(function (data) {
-        Promise.all(data.jobs.map(function (job) {
-          return fetchJenkinsJsonApi(job.url + '/lastBuild')
-            .then(function (data) {
-              return buildJobData(job.name, data)
+        vm.jobs = data.jobs.map(function (job) {
+          const newJob = {
+            name: job.name,
+            url: job.url,
+            status: 'loading'
+          }
+          fetchJenkinsJsonApi(newJob.url + '/lastBuild')
+            .then(function (build) {
+              updateJobStatus(newJob, build)
+              vm.jobs = vm.jobs.sort(function (a, b) {
+                return b.date - a.date
+              })
             })
-        })).then(function (jobs) {
-          vm.jobs = jobs.sort(function (a, b) {
-            return b.date - a.date
-          })
+          return newJob
         })
       })
   }
